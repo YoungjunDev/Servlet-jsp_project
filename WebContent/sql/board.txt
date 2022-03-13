@@ -1,0 +1,20 @@
+drop table board;
+drop sequence board_seq;
+
+create table board
+( num NUMBER(4) constraint board_num_pk PRIMARY KEY,
+  userid VARCHAR2(20),
+  title VARCHAR2(100),
+  scategory VARCHAR2(20),
+  content VARCHAR2(400),
+  writeday DATE DEFAULT SYSDATE,
+  readcnt NUMBER(4) DEFAULT 0 );
+  
+ alter table board
+  add CONSTRAINT board_userid_fk FOREIGN KEY(userid)
+   REFERENCES member(userid) ON DELETE CASCADE;
+ 
+   create sequence board_seq;  
+ 
+  commit;
+  
